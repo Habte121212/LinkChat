@@ -2,4 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ded5b8 0%, #c8dcff 100%);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
