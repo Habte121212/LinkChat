@@ -1,14 +1,18 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './register.scss'
 
-const Register = () => {
+const Register = ({ onSuccess }) => {
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
     // Simulate async register (replace with real logic)
-    setTimeout(() => setLoading(false), 1500)
+    setTimeout(() => {
+      setLoading(false)
+      if (onSuccess) onSuccess()
+    }, 1500)
   }
 
   return (
@@ -29,7 +33,7 @@ const Register = () => {
           </button>
         </form>
         <div className="register-link">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </div>
       </div>
     </div>

@@ -11,7 +11,6 @@ import Login from './page/login/Login'
 import Register from './page/register/Register'
 
 function App() {
-  // Simulated auth state (replace with real auth logic)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [registered, setRegistered] = useState(false)
 
@@ -21,21 +20,23 @@ function App() {
         <Routes>
           <Route
             path="/register"
-            element={<Register onSuccess={() => setRegistered(true)} />}
-          />
-          <Route
-            path="/login"
             element={
-              registered ? (
-                <Login onSuccess={() => setIsAuthenticated(true)} />
-              ) : (
-                <Navigate to="/register" />
-              )
+              <Register
+                onSuccess={() => {
+                  setRegistered(true)
+                }}
+              />
             }
           />
           <Route
+            path="/login"
+            element={<Login onSuccess={() => setIsAuthenticated(true)} />}
+          />
+          <Route
             path="/"
-            element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
+            element={
+              isAuthenticated ? <Home /> : <Navigate to="/login" replace />
+            }
           />
         </Routes>
       </div>
