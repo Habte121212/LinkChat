@@ -1,0 +1,58 @@
+// Responsive SCSS mixins and utility classes (using px units)
+
+$breakpoint-mobile: 600px;
+$breakpoint-tablet: 900px;
+$breakpoint-desktop: 1200px;
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile + 1}) and (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: #{$breakpoint-tablet + 1}) {
+    @content;
+  }
+}
+
+// Utility classes
+.hide-mobile {
+  display: block;
+  @include mobile {
+    display: none !important;
+  }
+}
+.hide-tablet {
+  display: block;
+  @include tablet {
+    display: none !important;
+  }
+}
+.hide-desktop {
+  display: block;
+  @include desktop {
+    display: none !important;
+  }
+}
+
+// Responsive container helper
+.responsive-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  @include mobile {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  @include tablet {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

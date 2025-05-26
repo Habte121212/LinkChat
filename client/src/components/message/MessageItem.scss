@@ -1,0 +1,75 @@
+.message-item {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+
+  &.received {
+    flex-direction: row;
+    .message-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #ded5b8;
+    }
+    .message-content {
+      background: #fff;
+      border-radius: 12px 12px 12px 4px;
+      box-shadow: 0 1px 4px #ded5b822;
+      padding: 0.7rem 1rem;
+      color: #222;
+      .shared-image {
+        max-width: 180px;
+        border-radius: 10px;
+        margin-bottom: 0.3rem;
+      }
+      .message-time {
+        display: block;
+        color: #aaa;
+        font-size: 0.85rem;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+  &.sent {
+    flex-direction: row-reverse;
+    .message-content {
+      background: linear-gradient(90deg, #ded5b8 0%, #c8dcff 100%);
+      border-radius: 12px 12px 4px 12px;
+      box-shadow: 0 1px 4px #c8dcff22;
+      padding: 0.7rem 1rem;
+      color: #222;
+      .message-time {
+        display: block;
+        color: #aaa;
+        font-size: 0.85rem;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+  &.call-info {
+    flex-direction: row-reverse;
+    .message-content {
+      background: #f5f6fa;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px #ded5b822;
+      padding: 0.7rem 1rem;
+      color: #3a7bd5;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      .call-icon {
+        font-size: 1.3rem;
+      }
+      .call-text {
+        font-weight: 600;
+      }
+      .message-time {
+        color: #aaa;
+        font-size: 0.85rem;
+        margin-left: 0.7rem;
+      }
+    }
+  }
+}

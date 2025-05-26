@@ -1,0 +1,33 @@
+.loader-2025 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  height: 2.5em;
+}
+.loader-2025 .dot {
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #ded5b8 0%, #c8dcff 100%);
+  box-shadow: 0 0 8px #c8dcff55;
+  animation: loader-bounce 1s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.loader-2025 .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader-2025 .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loader-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-0.7em) scale(1.15);
+    opacity: 0.7;
+  }
+}

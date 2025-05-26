@@ -1,0 +1,119 @@
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: transparent;
+  padding: 2.5rem 0;
+
+  .chat-container {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+    padding: 2.5rem 2rem;
+    max-width: 1100px;
+    width: 100vw;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 2rem;
+
+    h2 {
+      color: #2d2d2d;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: #3a7bd5;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e6ef;
+    margin-bottom: 1.2rem;
+
+    h2 {
+      color: #3a7bd5;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    .status-indicator {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4caf50;
+      &.online {
+        color: #4caf50;
+      }
+      &.offline {
+        color: #f44336;
+      }
+    }
+  }
+
+  .chat-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e6ef;
+    text-align: center;
+    .footer-text {
+      color: #aaa;
+      font-size: 0.98rem;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Responsive layout for chat-app-layout
+.chat-app-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem; // Increased gap for clearer separation
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .chat-app-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .chat-container {
+    padding: 1.2rem 0.5rem;
+    min-height: 500px;
+  }
+}
+
+// Use a plain media query instead of @include desktop
+@media (min-width: 901px) {
+  .contact-list {
+    border-right: 2px solid #e0e6ef;
+    box-shadow: 2px 0 12px 0 rgba(31, 38, 135, 0.04);
+    margin-right: 0;
+  }
+}

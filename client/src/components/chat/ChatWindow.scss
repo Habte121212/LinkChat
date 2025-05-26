@@ -1,0 +1,365 @@
+@import '../../style.scss';
+
+.chat-app-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.chat-window {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+  width: 100%;
+  max-width: 600px;
+  min-height: 650px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+
+  .chat-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.2rem 0.5rem 1.2rem;
+    border-bottom: 1px solid #e0e6ef;
+    background: transparent;
+
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      .profile-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ded5b8;
+        box-shadow: 0 2px 8px #ded5b855;
+      }
+      .profile-name {
+        font-weight: 600;
+        color: #2d2d2d;
+        font-size: 1.1rem;
+      }
+    }
+    .chat-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      .icon-btn {
+        background: #f5f6fa;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #3a7bd5;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 1px 4px #c8dcff22;
+        &:hover {
+          background: #c8dcff33;
+          box-shadow: 0 2px 8px #c8dcff55;
+        }
+      }
+    }
+  }
+
+  .messages {
+    flex: 1;
+    padding: 1.2rem;
+    overflow-y: auto;
+    background: linear-gradient(135deg, #f5f6fa 0%, #e0e6ef 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    .empty-state {
+      color: #aaa;
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+    }
+    .message-item {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.7rem;
+      &.received {
+        flex-direction: row;
+        .message-avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1.5px solid #ded5b8;
+        }
+        .message-content {
+          background: #fff;
+          border-radius: 12px 12px 12px 4px;
+          box-shadow: 0 1px 4px #ded5b822;
+          padding: 0.7rem 1rem;
+          color: #222;
+          .shared-image {
+            max-width: 180px;
+            border-radius: 10px;
+            margin-bottom: 0.3rem;
+          }
+          .message-time {
+            display: block;
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+          }
+        }
+      }
+      &.sent {
+        flex-direction: row-reverse;
+        .message-content {
+          background: linear-gradient(90deg, #ded5b8 0%, #c8dcff 100%);
+          border-radius: 12px 12px 4px 12px;
+          box-shadow: 0 1px 4px #c8dcff22;
+          padding: 0.7rem 1rem;
+          color: #222;
+          .message-time {
+            display: block;
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .message-input {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #e0e6ef;
+    background: #fafbfc;
+    padding: 0.7rem 1rem;
+    gap: 0.7rem;
+    input[type='text'] {
+      flex: 1;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      background: #f5f6fa;
+      color: #333;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #c8dcff99;
+        border-color: #3a7bd5;
+      }
+    }
+    .attach-btn {
+      background: #f5f6fa;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #3a7bd5;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 4px #c8dcff22;
+      &:hover {
+        background: #c8dcff33;
+        box-shadow: 0 2px 8px #c8dcff55;
+      }
+    }
+    button[type='submit'] {
+      background: linear-gradient(90deg, #ded5b8 0%, #c8dcff 100%);
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1.2rem;
+      color: #222;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      &:hover {
+        background: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+        color: #111;
+      }
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+      input[type='text'],
+      .attach-btn,
+      button[type='submit'] {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+      }
+      .attach-btn {
+        margin-bottom: 0.3rem;
+      }
+      button[type='submit'] {
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}
+
+.profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 62, 80, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+
+  .profile-modal-content {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    padding: 2.2rem 2.5rem 2rem 2.5rem;
+    min-width: 320px;
+    max-width: 95vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s;
+      &:hover {
+        color: #3a7bd5;
+      }
+    }
+    .profile-modal-avatar-section {
+      position: relative;
+      margin-bottom: 1rem;
+      .profile-modal-avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ded5b8;
+        box-shadow: 0 2px 12px #ded5b855;
+      }
+      .edit-img-btn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #c8dcff;
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+        color: #3a7bd5;
+        cursor: pointer;
+        box-shadow: 0 1px 4px #c8dcff55;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, color 0.2s;
+        &:hover {
+          background: #ded5b8;
+          color: #222;
+        }
+      }
+    }
+    h3 {
+      margin: 0.5rem 0 0.2rem 0;
+      font-size: 1.3rem;
+      color: #2d2d2d;
+      font-weight: 700;
+    }
+    .profile-status {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      &.online {
+        color: #4caf50;
+      }
+      &.offline {
+        color: #f44336;
+      }
+    }
+    .profile-bio-section {
+      width: 100%;
+      label {
+        font-size: 1rem;
+        color: #3a7bd5;
+        font-weight: 600;
+      }
+      p,
+      textarea {
+        width: 100%;
+        margin: 0.5rem 0 1rem 0;
+        font-size: 1rem;
+        color: #222;
+        border-radius: 8px;
+        border: 1.5px solid #e0e6ef;
+        background: #f5f6fa;
+        padding: 0.7rem 1rem;
+        resize: none;
+      }
+      textarea {
+        min-height: 60px;
+        outline: none;
+        transition: box-shadow 0.2s, border-color 0.2s;
+        box-shadow: 0 1px 4px #c8dcff22;
+        &:focus {
+          box-shadow: 0 0 0 2px #c8dcff99;
+          border-color: #3a7bd5;
+        }
+      }
+      .edit-btn,
+      .save-btn {
+        background: linear-gradient(90deg, #ded5b8 0%, #c8dcff 100%);
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1.2rem;
+        color: #222;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 0.2rem;
+        transition: background 0.2s, color 0.2s;
+        &:hover {
+          background: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+          color: #111;
+        }
+      }
+    }
+  }
+}

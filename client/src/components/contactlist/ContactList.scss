@@ -1,0 +1,1099 @@
+@use '../../_mixins.scss' as *;
+
+// Hide mobile menu and drawer on desktop/tablet
+.contact-list-mobile-menu,
+.contact-list-mobile-drawer {
+  display: none;
+  @include mobile {
+    display: flex;
+  }
+}
+.contact-list-mobile-drawer {
+  @include mobile {
+    display: block;
+  }
+}
+
+// Hide desktop/tablet contact list on mobile
+.contact-list {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.contact-list {
+  margin-top: 16px;
+  width: 180px;
+  background: #f5f6fa;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.08);
+  padding: 0.7rem 0.4rem 0.7rem 0.4rem;
+  margin-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  .contact-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #3a7bd5;
+    margin-bottom: 0.2rem;
+    gap: 0.3em;
+    .settings-btn,
+    .theme-btn {
+      display: inline-flex;
+      margin-left: 0.3rem;
+      // Hide on mobile, show on desktop/tablet
+      @include mobile {
+        display: none;
+      }
+    }
+    .add-friend-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      background: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+      border: none;
+      border-radius: 999px;
+      width: auto;
+      min-width: 36px;
+      height: 36px;
+      padding: 0 0.8em 0 0.6em;
+      font-size: 1rem;
+      color: #2563eb;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 16px #c8dcff33, 0 1.5px 8px #ded5b822;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s,
+        transform 0.13s;
+      position: relative;
+      overflow: hidden;
+      .add-friend-icon {
+        display: flex;
+        align-items: center;
+        font-size: 1.35em;
+        margin-right: 0.2em;
+        filter: drop-shadow(0 1px 2px #fff8) drop-shadow(0 2px 8px #3a7bd522);
+      }
+      .add-friend-label {
+        display: inline-block;
+        font-size: 1.08rem;
+        font-weight: 600;
+        color: #2563eb;
+        letter-spacing: 0.01em;
+        margin-left: 0.2em;
+        @include mobile {
+          display: none;
+        }
+      }
+      &:hover,
+      &:focus-visible {
+        background: linear-gradient(90deg, #ded5b8 0%, #c8dcff 100%);
+        color: #174ea6;
+        box-shadow: 0 4px 24px #c8dcff55;
+        transform: translateY(-2px) scale(1.04);
+        .add-friend-label {
+          color: #174ea6;
+        }
+      }
+      &:active {
+        background: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+        color: #174ea6;
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.5rem 0.45rem 0.4rem;
+      border-radius: 14px;
+      background: #fff;
+      border: 1.5px solid #f0f4fa;
+      box-shadow: 0 1px 6px 0 rgba(31, 38, 135, 0.06);
+      transition: background 0.18s, box-shadow 0.18s, border 0.18s;
+      cursor: pointer;
+      position: relative;
+      min-height: 44px;
+      &:hover {
+        background: #eaf3fb;
+        box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.1);
+        border-color: #c8dcff;
+      }
+      &.active {
+        background: linear-gradient(90deg, #eaf3fb 0%, #c8dcff 100%);
+        border-color: #3a7bd5;
+        box-shadow: 0 2px 16px 0 #3a7bd522;
+        .contact-name {
+          color: #2563eb;
+          font-weight: 700;
+        }
+      }
+      .contact-avatar {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ded5b8;
+        box-shadow: 0 1px 4px #ded5b855;
+        background: #f5f6fa;
+        margin-right: 0.3rem;
+      }
+      .contact-name {
+        flex: 1;
+        font-weight: 500;
+        color: #2d2d2d;
+        font-size: 1rem;
+        letter-spacing: 0.01em;
+        transition: color 0.18s, font-weight 0.18s;
+      }
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-left: 0.3rem;
+        display: inline-block;
+      }
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+    margin-right: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.08);
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    background: #f8fafc;
+    .contact-list-header {
+      font-size: 1rem;
+      padding: 0.2rem 0.3rem;
+      .add-friend-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
+      }
+    }
+    ul {
+      gap: 0.5rem;
+      li {
+        padding: 0.4rem 0.2rem;
+        border-radius: 7px;
+        // Only keep this avatar rule for mobile
+        .contact-avatar,
+        img.contact-avatar,
+        .contact-avatar img {
+          width: 32px !important;
+          height: 32px !important;
+          min-width: 32px !important;
+          min-height: 32px !important;
+          max-width: 32px !important;
+          max-height: 32px !important;
+          border-radius: 50% !important;
+          object-fit: cover !important;
+          border: 1px solid #ded5b8 !important;
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          background: #f5f6fa !important;
+          display: inline-block !important;
+          position: relative !important;
+          aspect-ratio: 1 / 1 !important;
+        }
+        .contact-name {
+          font-size: 0.98rem;
+        }
+        .status-dot {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+  }
+}
+
+// Ensure mobile menu and drawer display correctly at 375px width
+.contact-list-mobile-menu {
+  display: none;
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 56px;
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.08);
+    margin-bottom: 0.7rem;
+    z-index: 1001;
+  }
+}
+.contact-list-mobile-drawer {
+  display: none;
+  @include mobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 62, 80, 0.18);
+    z-index: 2000;
+    .drawer-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      max-width: 100vw;
+      min-width: 0;
+      height: 100vh;
+      background: #fff;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 1.2rem 0.5rem 1rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      animation: slideInDrawer 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s;
+      &:hover {
+        color: #3a7bd5;
+      }
+    }
+    .drawer-section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #3a7bd5;
+      margin-bottom: 0.5rem;
+    }
+    .drawer-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .drawer-settings {
+      margin-top: 2rem;
+      border-top: 1px solid #e0e6ef;
+      padding-top: 1rem;
+      .drawer-settings-item {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-size: 1rem;
+        color: #555;
+        cursor: pointer;
+        padding: 0.5rem 0.2rem;
+        border-radius: 8px;
+        transition: background 0.2s;
+        &:hover {
+          background: #c8dcff22;
+          color: #3a7bd5;
+        }
+      }
+    }
+    .drawer-action-btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.9rem 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px #ded5b822;
+    }
+    .contacts-btn {
+      background: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+      color: #3a7bd5;
+    }
+    .add-btn {
+      background: linear-gradient(90deg, #ded5b8 0%, #ffe7a0 100%);
+      color: #b48a00;
+    }
+    .settings-btn {
+      background: linear-gradient(90deg, #e0e6ef 0%, #c8dcff 100%);
+      color: #3a7bd5;
+    }
+    .theme-btn {
+      background: linear-gradient(90deg, #c8dcff 0%, #b8ded5 100%);
+      color: #1e7b6e;
+    }
+    .save-btn {
+      background: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+      color: #3a7bd5;
+      margin-top: 1rem;
+    }
+    .drawer-back-btn {
+      background: none;
+      border: none;
+      color: #3a7bd5;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      padding: 0.2rem 0.7rem 0.2rem 0.2rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .drawer-back-btn:hover {
+      background: #c8dcff33;
+    }
+    .drawer-settings-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      label {
+        font-size: 1rem;
+        color: #3a7bd5;
+        font-weight: 600;
+      }
+      input {
+        padding: 0.7rem 1rem;
+        border-radius: 8px;
+        border: 1.5px solid #e0e6ef;
+        background: #f5f6fa;
+        font-size: 1rem;
+        color: #222;
+        margin-bottom: 0.5rem;
+        transition: box-shadow 0.2s, border-color 0.2s;
+        box-shadow: 0 1px 4px #c8dcff22;
+        &:focus {
+          box-shadow: 0 0 0 2px #c8dcff99;
+          border-color: #3a7bd5;
+          outline: none;
+        }
+      }
+    }
+    .drawer-theme-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .theme-swatch {
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .theme-swatch.light {
+      background: #fff;
+      color: #3a7bd5;
+      border: 1.5px solid #c8dcff;
+    }
+    .theme-swatch.dark {
+      background: #222;
+      color: #fff;
+      border: 1.5px solid #333;
+    }
+    .theme-swatch.blue {
+      background: #3a7bd5;
+      color: #fff;
+      border: 1.5px solid #3a7bd5;
+    }
+    .theme-swatch.gold {
+      background: #ded5b8;
+      color: #b48a00;
+      border: 1.5px solid #ded5b8;
+    }
+    .theme-swatch.default {
+      background: linear-gradient(135deg, #ded5b8 0%, #c8dcff 100%);
+      color: #3a7bd5;
+      border-color: #ded5b8;
+      &.active {
+        box-shadow: 0 0 0 4px #ded5b8, 0 2px 16px #3a7bd522;
+        font-weight: 900;
+        transform: scale(1.08);
+        z-index: 2;
+      }
+      &:hover {
+        background: linear-gradient(135deg, #c8dcff 0%, #ded5b8 100%);
+        color: #174ea6;
+        transform: scale(1.04);
+      }
+    }
+  }
+}
+
+// Enhanced mobile styles for 2025 look
+.contact-list {
+  @include mobile {
+    box-shadow: 0 4px 24px 0 rgba(31, 38, 135, 0.13);
+    border-radius: 18px;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    .contact-list-header {
+      font-size: 1.08rem;
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid #e0e6ef;
+      margin-bottom: 0.7rem;
+      .add-friend-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+        border-radius: 12px;
+      }
+    }
+    ul {
+      gap: 0.7rem;
+      li {
+        padding: 0.7rem 0.4rem;
+        border-radius: 12px;
+        min-height: 48px;
+        .contact-avatar {
+          width: 36px;
+          height: 36px;
+        }
+        .contact-name {
+          font-size: 1.08rem;
+        }
+        .status-dot {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+}
+
+.contact-list-mobile-drawer {
+  @include mobile {
+    background: rgba(44, 62, 80, 0.22);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    .drawer-content {
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 -4px 32px 0 rgba(31, 38, 135, 0.18);
+      animation: slideUpDrawer 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      min-height: 60vh;
+      max-height: 95vh;
+      overflow-y: auto;
+    }
+  }
+}
+
+// Add desktop-specific notification badge style
+.notif-badge-desktop {
+  background: linear-gradient(90deg, #ff5e62 0%, #ff9966 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #ff5e6244;
+  min-width: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+@media (max-width: 900px) {
+  .notif-badge-desktop {
+    display: none !important;
+  }
+}
+
+.notif-badge-telegram {
+  position: absolute;
+  top: -0.45em;
+  right: -1.1em;
+  min-width: 1.5em;
+  height: 1.5em;
+  background: linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95em;
+  box-shadow: 0 2px 8px #3a7bd533;
+  z-index: 3;
+  padding: 0 0.5em;
+  border: 2px solid #fff;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background 0.2s;
+}
+
+@keyframes slideInDrawer {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.2;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpDrawer {
+  from {
+    transform: translateY(100%);
+    opacity: 0.2;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+// --- POLISH: Mobile avatar animation, tap feedback, and scrollbar ---
+
+// Avatar fade/scale-in animation
+@keyframes avatarIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Mobile contact avatar animation
+.contact-list,
+.contact-list-mobile-drawer {
+  @include mobile {
+    .contact-avatar {
+      animation: avatarIn 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}
+
+// Tap ripple/highlight effect for mobile contact list items
+@media (max-width: 600px) {
+  .contact-list ul li,
+  .drawer-list li {
+    position: relative;
+    overflow: hidden;
+    transition: background 0.18s;
+    &:active {
+      background: #c8dcff44 !important;
+    }
+    // Ripple effect
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(58, 123, 213, 0.18);
+      border-radius: 100%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    &:active::after {
+      width: 180%;
+      height: 180%;
+      opacity: 1;
+      transition: none;
+    }
+  }
+}
+
+// Thinner, more translucent scrollbar for mobile
+@media (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    background: #e0e6ef22;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c8dcff66;
+    border-radius: 6px;
+  }
+}
+
+// No code changes, preparing for file move to a new folder structure for ContactList component.
+
+.no-contacts-msg {
+  text-align: center;
+  color: #aaa;
+  font-size: 1.1rem;
+  margin: 2rem 0 1.5rem 0;
+  position: relative;
+  .add-btn {
+    float: right;
+    margin-top: 1.2rem;
+  }
+}
+.contacts-header-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.7rem;
+  .add-btn {
+    margin-left: auto;
+    float: right;
+  }
+}
+
+.add-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0.7rem 0 1rem 0;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #c8dcff22, 0 1.5px 8px #ded5b822;
+  padding: 0.8rem 0.7rem 0.7rem 0.7rem;
+  border: 1.5px solid #e0e6ef55;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  label {
+    font-size: 1rem;
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 0.1em;
+    letter-spacing: 0.01em;
+  }
+  input {
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+  }
+  .drawer-action-btn.save-btn {
+    padding: 0.6rem 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .drawer-back-btn {
+    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+// Theme color variables and body[data-theme] selectors
+:root {
+  --theme-bg: #fff;
+  --theme-text: #222;
+  --theme-accent: #3a7bd5;
+  --theme-btn-gradient: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+}
+body[data-theme='light'] {
+  --theme-bg: #fff;
+  --theme-text: #222;
+  --theme-accent: #3a7bd5;
+  --theme-btn-gradient: linear-gradient(90deg, #c8dcff 0%, #ded5b8 100%);
+  background: linear-gradient(135deg, #ded5b8 0%, #c8dcff 100%) !important;
+}
+body[data-theme='dark'] {
+  --theme-bg: #181c24;
+  --theme-text: #f5f6fa;
+  --theme-accent: #c8dcff;
+  --theme-btn-gradient: linear-gradient(90deg, #23272f 0%, #3a7bd5 100%);
+}
+body[data-theme='blue'] {
+  --theme-bg: #eaf3fb;
+  --theme-text: #1a2a3a;
+  --theme-accent: #3a7bd5;
+  --theme-btn-gradient: linear-gradient(90deg, #3a7bd5 0%, #c8dcff 100%);
+}
+body[data-theme='gold'] {
+  --theme-bg: #fdf6e3;
+  --theme-text: #6b4f1d;
+  --theme-accent: #b48a00;
+  --theme-btn-gradient: linear-gradient(90deg, #ded5b8 0%, #ffe7a0 100%);
+}
+
+// Apply theme variables to main containers and buttons
+body,
+.drawer-content,
+.chat-window,
+.contact-list,
+.contact-list-mobile-drawer {
+  background: var(--theme-bg) !important;
+  color: var(--theme-text) !important;
+}
+.drawer-section-title,
+.profile-name,
+.menu-title,
+.drawer-back-btn {
+  color: var(--theme-accent) !important;
+}
+.drawer-action-btn,
+.drawer-action-btn.save-btn {
+  background: var(--theme-btn-gradient) !important;
+  color: var(--theme-text) !important;
+}
+.theme-swatch {
+  border: 2px solid var(--theme-accent);
+  background: var(--theme-bg);
+  color: var(--theme-accent);
+}
+.theme-swatch.active {
+  box-shadow: 0 0 0 2px var(--theme-accent);
+  font-weight: 700;
+}
+
+// Smooth theme transitions
+body,
+.drawer-content,
+chat-window,
+.contact-list,
+.contact-list-mobile-drawer {
+  transition: background 0.3s, color 0.3s;
+}
+.drawer-action-btn,
+.drawer-action-btn.save-btn,
+.theme-swatch {
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.contact-list-desktop-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44, 62, 80, 0.18);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  .drawer-content {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    padding: 2.2rem 2.2rem 2rem 2.2rem;
+    min-width: 340px;
+    max-width: 95vw;
+    min-height: 320px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    animation: slideInDrawer 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .drawer-close-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+    &:hover {
+      color: #3a7bd5;
+    }
+  }
+}
+
+// User settings styles
+.drawer-settings {
+  margin-top: 2rem;
+  border-top: 1px solid #e0e6ef;
+  padding-top: 1rem;
+  .drawer-settings-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    padding: 0.5rem 0.2rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+    &:hover {
+      background: #c8dcff22;
+      color: #3a7bd5;
+    }
+  }
+  .drawer-settings-user {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  .drawer-settings-avatar-wrap {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .drawer-settings-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #c8dcff;
+    box-shadow: 0 1px 4px #3a7bd533;
+    background: #f5f6fa;
+  }
+  .drawer-settings-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .drawer-settings-user-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #3a7bd5;
+  }
+  .drawer-settings-user-email {
+    font-size: 0.98rem;
+    color: #888;
+  }
+  .drawer-settings-darkmode-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.2rem 0 0.7rem 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #3a7bd5;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #c8dcff;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: #fff;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px #3a7bd533;
+  }
+  input:checked + .slider {
+    background: #23272f;
+  }
+  input:checked + .slider:before {
+    transform: translateX(20px);
+    background: #c8dcff;
+  }
+}
+
+// --- Improved, modern theme swatches for 2025 ---
+.drawer-theme-options {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.theme-swatch {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 2.5px solid var(--theme-accent);
+  border-radius: 14px;
+  padding: 1.1rem 1.7rem;
+  font-size: 1.13rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 0.7rem;
+  background: var(--theme-bg);
+  color: var(--theme-accent);
+  box-shadow: 0 2px 16px #3a7bd522, 0 1.5px 8px #ded5b822;
+  transition: background 0.28s, color 0.28s, box-shadow 0.28s, transform 0.18s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+.theme-swatch.light {
+  background: linear-gradient(120deg, #fff 60%, #eaf3fb 100%);
+  color: #3a7bd5;
+  border-color: #c8dcff;
+}
+.theme-swatch.dark {
+  background: linear-gradient(120deg, #23272f 60%, #3a7bd5 100%);
+  color: #fff;
+  border-color: #23272f;
+}
+.theme-swatch.blue {
+  background: linear-gradient(120deg, #3a7bd5 60%, #00d2ff 100%);
+  color: #fff;
+  border-color: #3a7bd5;
+}
+.theme-swatch.gold {
+  background: linear-gradient(120deg, #ffe7a0 60%, #ded5b8 100%);
+  color: #b48a00;
+  border-color: #ded5b8;
+}
+.theme-swatch.default {
+  background: linear-gradient(135deg, #ded5b8 0%, #c8dcff 100%);
+  color: #3a7bd5;
+  border-color: #ded5b8;
+  &.active {
+    box-shadow: 0 0 0 4px #ded5b8, 0 2px 16px #3a7bd522;
+    font-weight: 900;
+    transform: scale(1.08);
+    z-index: 2;
+  }
+  &:hover {
+    background: linear-gradient(135deg, #c8dcff 0%, #ded5b8 100%);
+    color: #174ea6;
+    transform: scale(1.04);
+  }
+}
+.theme-swatch .theme-icon {
+  font-size: 1.3em;
+  margin-right: 0.3em;
+  filter: drop-shadow(0 1px 2px #fff8) drop-shadow(0 2px 8px #3a7bd522);
+}
+.theme-swatch.active {
+  box-shadow: 0 0 0 4px var(--theme-accent), 0 2px 16px #3a7bd522;
+  font-weight: 900;
+  transform: scale(1.08);
+  z-index: 2;
+}
+.theme-swatch:focus-visible {
+  outline: 2.5px solid #3a7bd5;
+  outline-offset: 2px;
+}
+.theme-swatch:hover {
+  background: linear-gradient(120deg, #c8dcff 0%, #fff 100%);
+  color: #174ea6;
+  transform: scale(1.04);
+}
+
+// Polished theme swatches with improved accessibility
+.theme-swatch {
+  border: 2px solid var(--theme-accent);
+  background: var(--theme-bg);
+  color: var(--theme-accent);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.theme-swatch.active {
+  box-shadow: 0 0 0 2px var(--theme-accent);
+  font-weight: 700;
+  transform: scale(1.05);
+}
+.theme-swatch:hover {
+  transform: scale(1.03);
+}
+
+// Smooth transitions for settings UI
+.drawer-settings {
+  transition: background 0.3s, color 0.3s;
+}
+.drawer-settings-item {
+  transition: background 0.3s, color 0.3s;
+}
+
+// ENFORCE: All avatar images are always small, round, and object-fit: cover
+.contact-avatar,
+.contact-avatar img,
+.drawer-settings-avatar,
+.drawer-settings-avatar img {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  min-height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  display: inline-block !important;
+  aspect-ratio: 1 / 1 !important;
+  box-shadow: 0 1px 4px #3a7bd533 !important;
+  background: #f5f6fa !important;
+  border: 2px solid #c8dcff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  z-index: 1;
+}
+
+// For desktop, allow .contact-list .contact-avatar to be 40px, but never larger
+@media (min-width: 601px) {
+  .contact-list .contact-avatar,
+  .contact-list .contact-avatar img {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+  }
+}
+
+// Add cursor: pointer to all button elements and custom button classes for consistent pointer cursor on hover
+button,
+.add-friend-btn,
+.drawer-action-btn,
+.drawer-action-btn.save-btn,
+.drawer-close-btn,
+.drawer-back-btn,
+.theme-swatch,
+.settings-btn,
+.theme-btn,
+.contacts-btn,
+.add-btn {
+  cursor: pointer !important;
+}
