@@ -1,0 +1,55 @@
+.verify-email-page {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ded5b8 0%, #c8dcff 100%);
+
+  .card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    padding: 2.5rem 2rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 12px;
+    }
+    .status-success {
+      font-size: 22px;
+      color: #2ecc40;
+      margin: 16px;
+    }
+    .status-error {
+      font-size: 22px;
+      color: #e74c3c;
+      margin: 16px;
+    }
+    .status-verifying {
+      font-size: 22px;
+      margin: 16px;
+    }
+    .redirecting {
+      margin-top: 18px;
+      color: #555;
+    }
+    .resend-btn {
+      margin-top: 18px;
+      padding: 0.7em 1.5em;
+      border-radius: 8px;
+      border: none;
+      background: #3a7bd5;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+      &.disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

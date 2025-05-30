@@ -75,7 +75,8 @@ const registerUser = async (req, res) => {
         pass: process.env.EMAIL_PASS,
       },
     })
-    const verifyUrl = `http://localhost:5000/api/auth/verify-email?token=${encodeURIComponent(
+    // Use frontend URL for verification link
+    const verifyUrl = `http://localhost:5173/verify-email?token=${encodeURIComponent(
       rawToken,
     )}&email=${encodeURIComponent(email)}`
     await transporter.sendMail({

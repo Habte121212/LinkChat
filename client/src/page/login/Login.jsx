@@ -1,14 +1,32 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './login.scss'
+import { toast } from 'react-hot-toast'
+import axios from 'axios'
 
-const Login = () => {
+const API_URL = 'http://localhost:8500/server/auth'
+
+const Login = ({ onSuccess }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    toast.dismiss()
     setLoading(true)
-    // Simulate async login (replace with real logic)
-    setTimeout(() => setLoading(false), 1500)
+    try {
+      const res = await axios.post(`${API_URL}/login`, { email, password })
+      toast.success(res.data.message || 'Login successful!')
+      localStorage.setItem('token', res.data.token)
+      if (onSuccess) onSuccess()
+      navigate('/')
+    } catch (err) {
+      toast.error(err.response?.data?.error || err.message || 'Login failed')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -16,26 +34,22 @@ const Login = () => {
       <div className="container">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" disabled={loading} />
-          <input type="password" placeholder="Password" disabled={loading} />
-          <div className="forgot-password">
-            <span>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#4f8cff"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 12a10 10 0 1 1-4.93-8.36" />
-                <polyline points="22 4 12 14.01 9 11.01" />
-              </svg>
-              Forgot Password?
-            </span>
-          </div>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={loading}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={loading}
+            required
+          />
           <button type="submit" disabled={loading}>
             {loading ? <span className="loader"></span> : 'Login'}
           </button>

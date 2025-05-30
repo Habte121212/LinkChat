@@ -9,25 +9,18 @@ import { useState } from 'react'
 import Home from './page/home/Home'
 import Login from './page/login/Login'
 import Register from './page/register/Register'
+import VerifyEmail from './page/verifications/VerifyEmail'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [registered, setRegistered] = useState(false)
 
   return (
     <Router>
       <div className="container">
+        <Toaster position="top-center" />
         <Routes>
-          <Route
-            path="/register"
-            element={
-              <Register
-                onSuccess={() => {
-                  setRegistered(true)
-                }}
-              />
-            }
-          />
+          <Route path="/register" element={<Register onSuccess={() => {}} />} />
           <Route
             path="/login"
             element={<Login onSuccess={() => setIsAuthenticated(true)} />}
@@ -38,6 +31,7 @@ function App() {
               isAuthenticated ? <Home /> : <Navigate to="/login" replace />
             }
           />
+          <Route path="/verify-email" element={<VerifyEmail />} />
         </Routes>
       </div>
     </Router>
